@@ -1,0 +1,19 @@
+<div class="row">
+<% @subjects.each do |subject| %>
+	<div class="col s12 m4">
+		<div class="card blue-grey darken-1">
+			<div class="card-content white-text">
+				<span class="card-title"><%= truncate(subject.name, length: 19) %></span>
+				<p><%= truncate(subject.about, length: 30) %></p>
+			</div>
+			<div class="card-action">
+				<%= link_to 'Questions', subject %>
+				<% if user_signed_in? %>
+						<%= link_to 'Edit', edit_subject_path(subject) %>
+						<%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+			<%end%>
+</div>

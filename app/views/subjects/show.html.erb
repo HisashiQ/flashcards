@@ -1,0 +1,85 @@
+
+<div class="row">
+	<div class="col s12 m10 offset-m1">
+		<div class="card large">
+			<div class="card-content">
+				<h4><%= @subject.name %></h4>
+			</div>
+			<div class="card-tabs">
+				<ul class="tabs tabs-fixed-width">
+					<li class="tab"><a id="questionTab" class="active" href="#qofa">Question</a></li>
+					<li class="tab"><a id="answerTab" href="#aofq">Answer</a></li>
+					<li class="tab"><a href="#diagram">Diagram</a></li>
+				</ul>
+			</div>
+			<div class="card-content grey lighten-4">
+				<div id="qofa"></div>
+				<div id="aofq"></div>
+				<div id="diagram" class="center-align"></div>
+			</div>
+		</div>
+		<a class="waves-effect waves-light btn left" onclick="previousQuestion()"><i class="material-icons left">skip_previous
+		</i>Back</a>
+		<a class="waves-effect waves-light btn right " onclick="nextQuestion()"><i class="material-icons right">skip_next</i>Next</a>
+	</div>
+</div>
+
+<script>
+	var jsonResponse;
+	var index = 1;
+	$(function(){
+		var currentURL = window.location.href;
+		var urlarr = currentURL.split("/");
+		var param = urlarr[urlarr.length -1];
+		$.ajax({
+			method: 'get',
+			url: param + '.json',
+			dataType: "text",
+			success:function(response){
+				jsonResponse = JSON.parse(response);
+				$('#qofa').text(jsonResponse[0].question);
+				$('#aofq').text(jsonResponse[0].answer);
+				var id = jsonResponse[0].id;
+				if (id < 100){
+					id = "0" + id;
+				}
+				var a = jsonResponse[0].diagram_file_name;
+				var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+				$('#diagram').empty().prepend(j);
+			}
+		});
+	});
+
+	function nextQuestion(){
+		$('#qofa').text(jsonResponse[index].question);
+		$('#aofq').text(jsonResponse[index].answer);
+		var id = jsonResponse[index].id;
+		if (id < 100){
+			id = "0" + id;
+		}
+		var a = jsonResponse[index].diagram_file_name;
+		var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		$('#diagram').empty().prepend(j);
+		index = (index + 1) % jsonResponse.length ;
+		$('#questionTab').addClass('active');
+		$('ul.tabs').tabs('select_tab', 'qofa');
+	}
+
+
+	function previousQuestion(){
+		$('#qofa').text(jsonResponse[index].question);
+		$('#aofq').text(jsonResponse[index].answer);
+		var id = jsonResponse[index].id;
+		if (id < 100){
+			id = "0" + id;
+		}
+		var a = jsonResponse[index].diagram_file_name;
+		var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		$('#diagram').empty().prepend(j);
+		index = (index - 1) % jsonResponse.length;
+		if (index < 0) {
+			index *= -1;
+		}
+		$('ul.tabs').tabs('select_tab', 'qofa');
+	}
+</script>

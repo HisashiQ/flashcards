@@ -1,0 +1,45 @@
+<nav>
+	<div class="nav-wrapper">
+		<%= link_to :root, class:"brand-logo" do %>
+			<i class="fa fa-hand-spock-o fa-2x" aria-hidden="true"></i>Flash Cards
+		<% end %>
+		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+		<ul class="right hide-on-med-and-down">
+			<li>
+				<% if user_signed_in? %>
+					<li><%= link_to 'New Question', :new_question %></li>
+					<li><%= link_to 'New Subject', :new_subject %></li>
+					<li><%= link_to 'List of Questions', :questions %></li>
+					<li><%= link_to 'Subjects Page', :root, class: "waves-effect waves-light btn" %>	</li>
+					<%= link_to :destroy_user_session, :method => :delete, class: "waves-effect waves-light btn" do %>
+								<i class="material-icons right">lock_outline</i>Logout
+						<%end%>
+				<% else %>
+					<li><%= link_to 'Start Learning', :root, class: "waves-effect waves-light btn" %>	</li>
+					<%= link_to :new_user_session, class: "waves-effect waves-light btn" do %>
+								<i class="material-icons right">lock_open
+								</i>Login
+						<%end%>
+				<% end %>
+			</li>
+		</ul>
+		<ul class="side-nav" id="mobile-demo">
+			<li>
+			<% if user_signed_in? %>
+					<li><%= link_to 'New Question', :new_question %></li>
+					<li><%= link_to 'New Subject', :new_subject %></li>
+					<li><%= link_to 'List of Questions', :questions %></li>
+					<li><%= link_to 'Subjects Page', :root, class: "waves-effect waves-light btn" %>	</li>
+					<%= link_to :destroy_user_session, :method => :delete, class: "waves-effect waves-light btn" do %>
+								<i class="material-icons right">lock_outline</i>Logout
+								<%end%>
+			<% else %>
+			<%= link_to :new_user_session, class: "waves-effect waves-light btn" do %>
+							<li><%= link_to 'Start Learning', :root, class: "waves-effect waves-light btn" %>	</li>
+							<i class="material-icons right">lock_open</i>Login
+						<%end%>
+			<% end %>
+			</li>
+		</ul>
+	</div>
+</nav>
