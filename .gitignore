@@ -13,7 +13,6 @@
 !/log/.keep
 !/tmp/.keep
 .idea
-config/secrets.yml
 latest.*
 test
 # Ignore Byebug command history file.
