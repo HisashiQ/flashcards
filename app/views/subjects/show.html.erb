@@ -40,12 +40,15 @@
 				$('#qofa').text(jsonResponse[0].question);
 				$('#aofq').text(jsonResponse[0].answer);
 				var id = jsonResponse[0].id;
-				if (id < 100){
-					id = "0" + id;
-				}
-				var a = jsonResponse[0].diagram_file_name;
+				var a	= jsonResponse[0].diagram_file_name;
 				var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
-				$('#diagram').empty().prepend(j);
+				if (a == null){
+					j = "<p> No diagram uploaded </p>";
+				} else if (id < 100) {
+					id = "0" + id;
+					j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+				}
+					$('#diagram').empty().prepend(j);
 			}
 		});
 	});
@@ -54,11 +57,14 @@
 		$('#qofa').text(jsonResponse[index].question);
 		$('#aofq').text(jsonResponse[index].answer);
 		var id = jsonResponse[index].id;
-		if (id < 100){
-			id = "0" + id;
-		}
-		var a = jsonResponse[index].diagram_file_name;
+		var a	= jsonResponse[index].diagram_file_name;
 		var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		if (a == null){
+			j = "<p> No diagram uploaded </p>";
+		} else if (id < 100) {
+			id = "0" + id;
+			j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		}
 		$('#diagram').empty().prepend(j);
 		index = (index + 1) % jsonResponse.length ;
 		$('#questionTab').addClass('active');
@@ -70,11 +76,14 @@
 		$('#qofa').text(jsonResponse[index].question);
 		$('#aofq').text(jsonResponse[index].answer);
 		var id = jsonResponse[index].id;
-		if (id < 100){
-			id = "0" + id;
-		}
-		var a = jsonResponse[index].diagram_file_name;
+		var a	= jsonResponse[index].diagram_file_name;
 		var j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		if (a == null){
+			j = "<p> No diagram uploaded </p>";
+		} else if (id < 100) {
+			id = "0" + id;
+			j = "<img class='responsive-img' src='https://s3-us-west-2.amazonaws.com/comsci-flash/questions/diagrams/000/000/" + id + "/medium/" + a + "' />";
+		}
 		$('#diagram').empty().prepend(j);
 		index = (index - 1) % jsonResponse.length;
 		if (index < 0) {
