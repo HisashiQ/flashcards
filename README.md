@@ -13,18 +13,21 @@ This application allows an admin to login and create subjects. After creating a 
 * Postgresql
 * Materialize
 * jQuery
+* AWS S3 Bucket
 
 #### Build instructions:
 * Clone repo
 * Run `bundle install`
 * Run `rails db:create db:migrate`
 * Run `rails s`
+* Create environment variable locally and on heroku. They should be named:
 
+    `AWS_ACCESS_KEY_ID:`
+
+    `AWS_REGION:` 
+
+    `AWS_SECRET_ACCESS_KEY:`
+
+    `S3_BUCKET:`
+    
 Problems should be posted in the issue area or fork, fix and request a merge.
-
-#### To Do
-* Add user_id to subject and question page
-* Add user settings page
-* Re-enable user sign ups
-* Write tests
-* Private and public options
