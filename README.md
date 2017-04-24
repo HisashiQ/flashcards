@@ -19,7 +19,6 @@ This application allows an admin to login and create subjects. After creating a 
 * Clone repo
 * Run `bundle install`
 * Run `rails db:create db:migrate`
-* Run `rails s`
 * Create environment variable locally and on heroku. They should be named:
 
     `AWS_ACCESS_KEY_ID:`
@@ -29,5 +28,6 @@ This application allows an admin to login and create subjects. After creating a 
     `AWS_SECRET_ACCESS_KEY:`
 
     `S3_BUCKET:`
-    
+* Run `rails s`
+
 Problems should be posted in the issue area or fork, fix and request a merge.
