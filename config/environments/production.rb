@@ -1,5 +1,9 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+
+ config.middleware.use("Rack::GoogleAnalytics", :web_property_id => ENV["FLASHCARDS_GA_ID"])
+ 
+ 
+ # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
