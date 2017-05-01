@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col s12">
+		<p>
+			<strong>Question:</strong>
+			<%= @question.question %>
+		</p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
+		<p>
+			<strong>Answer:</strong>
+			<%= @question.answer %>
+		</p>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @question.answer %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+		<%= link_to 'Edit', edit_question_path(@question) %> |
+		<%= link_to 'Back', questions_path %>
+	</div>
+</div>
