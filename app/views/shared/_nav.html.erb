@@ -34,10 +34,11 @@
 								<i class="material-icons right">lock_outline</i>Logout
 								<%end%>
 			<% else %>
-			<%= link_to :new_user_session, class: "waves-effect waves-light btn" do %>
-							<li><%= link_to 'Start Learning', :root, class: "waves-effect waves-light btn" %>	</li>
-							<i class="material-icons right">lock_open</i>Login
-						<%end%>
+      <li><%= link_to 'Start Learning', :root, class: "waves-effect waves-light btn" %>	</li>
+      <%= link_to :new_user_session, class: "waves-effect waves-light btn" do %>
+            <i class="material-icons right">lock_open
+            </i>Login
+        <%end%>
 			<% end %>
 			</li>
 		</ul>
